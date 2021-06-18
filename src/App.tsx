@@ -6,7 +6,7 @@ import {
     DialogContentText,
     FormControl,
     FormControlLabel,
-    FormLabel, InputLabel,
+    FormLabel,
     Radio,
     RadioGroup,
     Select,
@@ -15,7 +15,6 @@ import {
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import RefreshOutlinedIcon from '@material-ui/icons/RefreshOutlined';
 import {FormikErrors, useFormik} from 'formik';
-import {log} from "util";
 
 type FormValuesType = {
     EnthernetIP: string
@@ -106,9 +105,11 @@ function App() {
                 errors.WirelessDNS = 'Invalid DNS address'
             }
             if (!values.WirelessNetworkName) {
-                errors.WirelessNetworkName = 'Field is equired'}
+                errors.WirelessNetworkName = 'Field is equired'
+            }
             if (!values.WirelessSecurityKey) {
-                errors.WirelessSecurityKey = 'Field is equired'}
+                errors.WirelessSecurityKey = 'Field is equired'
+            }
 
             return errors
         },
@@ -180,7 +181,8 @@ function App() {
                                                    value={formik.values.EnthernetSubnetMask}
                                                    onChange={formik.handleChange}
                                         />
-                                        {formik.errors.EnthernetSubnetMask ? <div>{formik.errors.EnthernetSubnetMask}</div> : null}
+                                        {formik.errors.EnthernetSubnetMask ?
+                                            <div>{formik.errors.EnthernetSubnetMask}</div> : null}
                                     </DialogContentText>
                                 </div>
                                 <div style={{display: 'flex', justifyContent: 'flex-end'}}>
@@ -263,13 +265,14 @@ function App() {
                                         value={formik.values.WirelessNetworkName}
                                         onChange={formik.handleChange}
                                     >
-                                        <option  value="" />
+                                        <option value=""/>
                                         <option value={10}>Ten</option>
                                         <option value={20}>Twenty</option>
                                         <option value={30}>Thirty</option>
                                     </Select>
-                                     <RefreshOutlinedIcon/>
-                                    {formik.errors.WirelessNetworkName ? <div>{formik.errors.WirelessNetworkName}</div> : null}
+                                    <RefreshOutlinedIcon/>
+                                    {formik.errors.WirelessNetworkName ?
+                                        <div>{formik.errors.WirelessNetworkName}</div> : null}
                                 </DialogContentText>
 
                             </div>
@@ -289,7 +292,8 @@ function App() {
                                            value={formik.values.WirelessSecurityKey}
                                            onChange={formik.handleChange}
                                 />
-                                {formik.errors.WirelessSecurityKey ? <div>{formik.errors.WirelessSecurityKey}</div> : null}
+                                {formik.errors.WirelessSecurityKey ?
+                                    <div>{formik.errors.WirelessSecurityKey}</div> : null}
                             </DialogContentText>
                         </div>
 
